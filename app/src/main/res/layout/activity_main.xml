@@ -1,29 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:weightSum="1">
-    <EditText android:id="@+id/edit_message"
-              android:layout_weight="1"
-              android:layout_width="0dp"
-              android:layout_height="wrap_content"
-              android:hint="@string/edit_message" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_send"
-        android:onClick="sendMessage" />
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/my_toolbar"
+    android:id="@+id/coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <include
+            layout="@layout/toolbar_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/edit_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/send_button"
+            android:layout_alignParentStart="true"
+            android:layout_alignStart="@id/send_button"
+            android:layout_alignTop="@+id/send_button"
+            android:layout_toStartOf="@+id/send_button"
+            android:hint="@string/edit_message"/>
+
+        <Button
+            android:id="@+id/send_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginTop="5dp"
+            android:onClick="sendMessage"
+            android:text="@string/button_send"/>
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
 
